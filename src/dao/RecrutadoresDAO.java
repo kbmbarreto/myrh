@@ -3,6 +3,8 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import database.ConnectionFactory;
 
@@ -17,9 +19,12 @@ public class RecrutadoresDAO {
 	public static final byte UPDATE = 2;
 	public static final byte DELETE = 3;
 	
+	private List<Recrutadores> listaRecrutadores;
+	
 	public RecrutadoresDAO() {
 		connectionFactory = new ConnectionFactory();
 		recrutador = new Recrutadores();
+		this.listaRecrutadores = new ArrayList<>();
 	}
 	
 	public boolean locate() {

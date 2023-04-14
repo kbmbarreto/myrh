@@ -3,11 +3,14 @@ package swing;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import dao.RecrutadoresDAO;
@@ -32,24 +35,23 @@ public class GuiCadastroRecrutadores extends JFrame {
 	}
 	
 	public void inicializarComponentes() {
-		setLayout(new FlowLayout(FlowLayout.LEFT));
+		getContentPane().setLayout(new FlowLayout(FlowLayout.LEFT));
 		setTitle("Cadastro de Recrutadores");
-		setBounds( 200, 100, 800, 600);
+		setBounds( 300, 200, 800, 600);
 		setLocationRelativeTo(null);
 		lblCodigo = new JLabel("Código");
 		lblDataContato = new JLabel("Data do contato");
 		lblNome = new JLabel("Nome");
-		lblTelefone = new JLabel("Telefone");
 		lblEmail = new JLabel("E-mail");
 		lblEmpresa = new JLabel("Empresa");
 		lblMeioDeContato = new JLabel("Meio de contato");
 		txtCodigo = new JTextField(10);
 		txtDataContato = new JTextField(20);
-		txtNome = new JTextField(50);
-		txtTelefone = new JTextField(30);
-		txtEmail = new JTextField(50);
-		txtEmpresa = new JTextField(50);
-		txtMeioDeContato = new JTextField(30);
+		txtNome = new JTextField(20);
+		txtTelefone = new JTextField(20);
+		txtEmail = new JTextField(35);
+		txtEmpresa = new JTextField(35);
+		txtMeioDeContato = new JTextField(15);
 		btnGravar = new JButton("Gravar");
 		btnAlterar = new JButton("Editar");
 		btnExcluir = new JButton("Excluir");
@@ -58,27 +60,34 @@ public class GuiCadastroRecrutadores extends JFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnSair = new JButton("Sair");
 		btnSair.setToolTipText("Sair");
-		add(lblCodigo);
-		add(txtCodigo);
-		add(lblDataContato);
-		add(txtDataContato);
-		add(lblNome);
-		add(txtNome);
-		add(lblTelefone);
-		add(txtTelefone);
-		add(lblEmail);
-		add(txtEmail);
-		add(lblEmpresa);
-		add(txtEmpresa);
-		add(lblMeioDeContato);
-		add(txtMeioDeContato);
-		add(btnGravar);
-		add(btnAlterar);
-		add(btnExcluir);
-		add(btnNovo);
-		add(btnLocalizar);
-		add(btnCancelar);
-		add(btnSair);
+	
+		
+		getContentPane().add(lblCodigo);
+		getContentPane().add(txtCodigo);
+		getContentPane().add(lblDataContato);
+		getContentPane().add(txtDataContato);
+		getContentPane().add(lblNome);
+		getContentPane().add(txtNome);
+		lblTelefone = new JLabel("Telefone");
+		getContentPane().add(lblTelefone);
+		getContentPane().add(txtTelefone);
+		getContentPane().add(lblEmail);
+		getContentPane().add(txtEmail);
+		getContentPane().add(lblEmpresa);
+		getContentPane().add(txtEmpresa);
+		getContentPane().add(lblMeioDeContato);
+		getContentPane().add(txtMeioDeContato);
+		getContentPane().add(btnGravar);
+		getContentPane().add(btnAlterar);
+		getContentPane().add(btnExcluir);
+		getContentPane().add(btnNovo);
+		getContentPane().add(btnLocalizar);
+		getContentPane().add(btnCancelar);
+		getContentPane().add(btnSair);
+		
+		JTable table = new JTable();
+		getContentPane().add(new JScrollPane(table));
+		
 		setResizable(false);
 		setBotoes(true, true, false, false, false, false);
 		recrutadores =new RecrutadoresDAO();
@@ -169,6 +178,7 @@ public class GuiCadastroRecrutadores extends JFrame {
 				recrutadores.recrutador.setEmail(txtEmail.getText());
 				recrutadores.recrutador.setEmpresa(txtEmpresa.getText());
 				recrutadores.recrutador.setMeio_de_contato(txtMeioDeContato.getText());
+				
 				JOptionPane.showMessageDialog(null, recrutadores.update(RecrutadoresDAO.CREATE));
 				limparCampos();
 			}

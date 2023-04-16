@@ -42,6 +42,7 @@ public class GuiCadastroRecrutadores extends JFrame {
 		lblCodigo = new JLabel("Código");
 		lblDataContato = new JLabel("Data do contato");
 		lblNome = new JLabel("Nome");
+		lblTelefone = new JLabel("Telefone");
 		lblEmail = new JLabel("E-mail");
 		lblEmpresa = new JLabel("Empresa");
 		lblMeioDeContato = new JLabel("Meio de contato");
@@ -68,7 +69,6 @@ public class GuiCadastroRecrutadores extends JFrame {
 		getContentPane().add(txtDataContato);
 		getContentPane().add(lblNome);
 		getContentPane().add(txtNome);
-		lblTelefone = new JLabel("Telefone");
 		getContentPane().add(lblTelefone);
 		getContentPane().add(txtTelefone);
 		getContentPane().add(lblEmail);
@@ -84,9 +84,6 @@ public class GuiCadastroRecrutadores extends JFrame {
 		getContentPane().add(btnLocalizar);
 		getContentPane().add(btnCancelar);
 		getContentPane().add(btnSair);
-		
-		JTable table = new JTable();
-		getContentPane().add(new JScrollPane(table));
 		
 		setResizable(false);
 		setBotoes(true, true, false, false, false, false);
@@ -144,18 +141,6 @@ public class GuiCadastroRecrutadores extends JFrame {
 				if (txtNome.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "O campo Nome não pode ser vazio!");
 					txtNome.requestFocus();
-					return;
-				}
-				
-				if (txtTelefone.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "O campo Telefone não pode ser vazio!");
-					txtTelefone.requestFocus();
-					return;
-				}
-				
-				if (txtEmail.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "O campo E-mail não pode ser vazio!");
-					txtEmail.requestFocus();
 					return;
 				}
 				

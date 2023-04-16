@@ -19,12 +19,9 @@ public class RecrutadoresDAO {
 	public static final byte UPDATE = 2;
 	public static final byte DELETE = 3;
 	
-	private List<Recrutadores> listaRecrutadores;
-	
 	public RecrutadoresDAO() {
 		connectionFactory = new ConnectionFactory();
 		recrutador = new Recrutadores();
-		this.listaRecrutadores = new ArrayList<>();
 	}
 	
 	public boolean locate() {
